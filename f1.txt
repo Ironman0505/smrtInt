@@ -1,0 +1,91 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+
+const int MAX_T = 1e5;
+
+const int MAX_N = 1e5;
+
+const int MAX_SUM_LEN = 1e5;
+
+
+#define fast ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+#define ff first
+
+#define ss second
+
+#define mpr make_pair
+
+#define ll long long
+
+#define fl() for(int i=0;i<n;i++)
+
+#define rfl() for(int i=n-1;i>=0;i--)
+
+#define afl() for(int i=a;i<n;i++)
+
+#define pb push_back
+
+
+
+int sum_n = 0, sum_m = 0;
+
+int max_n = 0, max_m = 0;
+
+int yess = 0;
+
+int nos = 0;
+
+int total_ops = 0;
+
+ll mod = 1000000007;
+
+
+
+
+
+
+
+// ------------------- MAIN CODE ------------------ //
+
+
+
+// SUBSET GENERATION WITH BITS...
+
+void solve(){
+ll n; cin>>n;
+ll a[n];
+for(int i=0;i<n;i++) cin>>a[i];
+vector<vector<int>>ans;
+for(int i=0;i<pow(2,n);i++)
+{
+	vector<int>tmp;
+	for(int j=0;j<n;j++){
+		if(i&(1<<j)) //checking if jth bit is set or not in num i..
+			tmp.pb(a[j]);
+	}
+	ans.pb(tmp);
+}
+
+for(auto x : ans){
+	for(auto y : x)
+		cout<<y<<" ";
+	cout<<endl;
+}
+cout<<endl;
+
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int t; 
+    cin>>t;
+    while(t--){
+    	// cout<<"Viper"<<endl;
+       solve();
+    }
+    return 0;
+}
