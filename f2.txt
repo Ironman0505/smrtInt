@@ -1,0 +1,109 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+
+const int MAX_T = 1e5;
+
+const int MAX_N = 1e5;
+
+const int MAX_SUM_LEN = 1e5;
+
+
+#define fast ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+#define ff first
+
+#define ss second
+
+#define mpr make_pair
+
+#define ll long long
+
+#define fl() for(int i=0;i<n;i++)
+
+#define rfl() for(int i=n-1;i>=0;i--)
+
+#define afl() for(int i=a;i<n;i++)
+
+#define pb push_back
+
+
+
+int sum_n = 0, sum_m = 0;
+
+int max_n = 0, max_m = 0;
+
+int yess = 0;
+
+int nos = 0;
+
+int total_ops = 0;
+
+ll mod = 1000000007;
+
+
+
+
+
+
+
+// ------------------- MAIN CODE ------------------ //
+
+
+
+// SUBSET GENERATION WITH BITS...
+
+ll poww(ll a, ll b){
+	ll ans=1;
+	while(b){
+		if(b&1)
+			ans=(ans*a)%mod;
+		b/=2;
+		a=(a*a)%mod;
+	}
+	return ans;
+}
+
+//PRINTING ALL SUBSEQUENCES...
+
+vector<vector<ll>>ans;
+void rec(ll id,ll n,ll a[],vector<ll> tmp){
+	if(id==n){
+		ans.pb(tmp);
+		return;
+	}
+	tmp.pb(a[id]);
+	rec(id+1,n,a,tmp);
+	tmp.pop_back();
+	rec(id+1,n,a,tmp);
+}
+
+
+void solve(){
+
+ll n; cin>>n;
+ll a[n];
+fl() cin>>a[i];
+vector<ll>tmp;
+rec(0ll,n,a,tmp);
+
+for(auto x : ans){
+	for(auto y : x){
+		cout<<y<<" ";
+	}
+	cout<<endl;
+}
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+    int t; 
+    cin>>t;
+    while(t--){
+    	// cout<<"Viper"<<endl;
+       solve();
+    }
+    return 0;
+}
